@@ -4,7 +4,9 @@
 
 { config, pkgs, ... }:
 
-let tmuxConfig = (pkgs.callPackage ./tmux.nix {});
+let
+  tmuxConfig = (pkgs.callPackage ./tmux.nix {});
+  zshConfig  = (pkgs.callPackage ./zsh.nix {});
 in
 {
   imports =
@@ -72,18 +74,21 @@ in
     plasma-nm
     blueman
     (callPackage ./neovim.nix {})
-    tmux
-  ] ++ tmuxConfig.plugins;
+    tmux zsh
+  ]
+  ++ tmuxConfig.plugins
+  ++ zshConfig.plugins;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.mtr.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-  programs.tmux = {
-    enable = true;
-    historyLimit = 10000;
-    extraTmuxConf = tmuxConfig.config;
-  };
+
+  # global tmux configuration
+  programs.tmux = tmuxConfig.config;
+
+  # zsh configuration
+  programs.zsh = zshConfig.config;
 
   # List services that you want to enable:
 
@@ -130,6 +135,7 @@ in
     extraGroups = [ "wheel" "networkmanager" "video" "audio"];
     createHome = true;
     home = "/home/ikavalio";
+    shell = pkgs.zsh;
   };
 
   # This value determines the NixOS release with which your system is to be

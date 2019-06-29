@@ -21,9 +21,13 @@ let
     in "run-shell ${p}/share/tmux-plugins/${pName}/${pFile}.tmux"
   ) pluginList;
   pluginConf = builtins.concatStringsSep "\n" pluginNames;
-in {
+in rec {
   plugins = pluginList;
-  config = ''
+
+  configFile = ''
+  # mouse mode
+  set -g mouse on
+
   # status update interval
   set -g status-interval 5
 
@@ -88,4 +92,12 @@ in {
 
   # Load plugins
   '' + pluginConf;
+
+  config = {
+    enable = true;
+    baseIndex = 1;
+    keyMode = "vi";
+    historyLimit = 10000;
+    extraTmuxConf = configFile;
+  };
 }
