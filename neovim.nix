@@ -153,19 +153,19 @@ neovim.override {
 
       set foldmethod=syntax
 
-			" Copy to clipboard
-			vnoremap  <leader>y  "+y
-			nnoremap  <leader>Y  "+yg_
-			nnoremap  <leader>y  "+y
-			nnoremap  <leader>yy "+yy
+      " Copy to clipboard
+      vnoremap  <leader>y  "+y
+      nnoremap  <leader>Y  "+yg_
+      nnoremap  <leader>y  "+y
+      nnoremap  <leader>yy "+yy
 
-			" Paste from clipboard
-			nnoremap <leader>p "+p
-			nnoremap <leader>P "+P
-			vnoremap <leader>p "+p
-			vnoremap <leader>P "+P<Paste>
+      " Paste from clipboard
+      nnoremap <leader>p "+p
+      nnoremap <leader>P "+P
+      vnoremap <leader>p "+p
+      vnoremap <leader>P "+P<Paste>
 
-			map <C-p> :FZF<CR>
+      map <C-p> :FZF<CR>
       map <C-n> :NERDTreeToggle<CR>
       map <A-a> :ChefFindAny<CR>
 
