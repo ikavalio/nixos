@@ -1,5 +1,25 @@
-{neovim, vimPlugins, stdenv}:
+{neovim, lib, vimPlugins, vimUtils, stdenv, fetchFromGitHub, tabnine}:
 
+let
+  deoplete-tabnine-orig = vimUtils.buildVimPluginFrom2Nix {
+    pname = "deoplete-tabnine";
+    version = "2019-04-08";
+    src = fetchFromGitHub {
+      owner = "tbodt";
+      repo = "deoplete-tabnine";
+      rev = "050a3bfd4f5ff065b1fe864748557b2d7e439b48";
+      sha256 = "0gk6d33v2j3cydvq4678brz0885pd91vj19ivbr7i24ymyhfg9ky";
+    };
+  };
+  deoplete-tabnine = deoplete-tabnine-orig.overrideAttrs(old: {
+    postPatch = ''
+      substituteInPlace rplugin/python3/deoplete/sources/tabnine.py \
+        --replace "path = get_tabnine_path(binary_dir)" "path = '${lib.getBin tabnine}/bin/TabNine'"
+      substituteInPlace rplugin/python3/deoplete/sources/tabnine.py \
+        --replace "os.path.join(self._install_dir, 'tabnine.log')" "'/var/log/tabnine.log'"
+    '';
+  });
+in
 neovim.override {
   vimAlias = true;
   viAlias = true;
@@ -26,6 +46,7 @@ neovim.override {
       syntastic
       deoplete-nvim
       deoplete-go
+      deoplete-tabnine
       vim-nix
     ];
 

@@ -7,6 +7,7 @@
 let
   tmuxConfig = (pkgs.callPackage ./tmux.nix {});
   zshConfig  = (pkgs.callPackage ./zsh.nix {});
+  tabnine    = (pkgs.callPackage ./tabnine.nix {});
 in
 {
   imports =
@@ -50,6 +51,7 @@ in
       terminus_font
       dejavu_fonts
       ubuntu_font_family
+      fira
       source-code-pro
       source-sans-pro
       source-serif-pro
@@ -63,6 +65,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    binutils patchelf
     acpi
     killall git
     wget curl nettools
@@ -73,7 +76,8 @@ in
     firefox spotify
     plasma-nm
     blueman
-    (callPackage ./neovim.nix {})
+    tabnine
+    (callPackage ./neovim.nix {tabnine = tabnine; })
     tmux zsh
   ]
   ++ tmuxConfig.plugins
