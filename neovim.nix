@@ -16,7 +16,9 @@ let
       substituteInPlace rplugin/python3/deoplete/sources/tabnine.py \
         --replace "path = get_tabnine_path(binary_dir)" "path = '${lib.getBin tabnine}/bin/TabNine'"
       substituteInPlace rplugin/python3/deoplete/sources/tabnine.py \
-        --replace "os.path.join(self._install_dir, 'tabnine.log')" "'/var/log/tabnine.log'"
+        --replace "os.path.join(self._install_dir, 'tabnine.log')" ""
+      substituteInPlace rplugin/python3/deoplete/sources/tabnine.py \
+        --replace "'--log-file-path'," ""
     '';
   });
 in
@@ -46,6 +48,7 @@ neovim.override {
       syntastic
       deoplete-nvim
       deoplete-go
+      deoplete-rust
       deoplete-tabnine
       vim-nix
     ];

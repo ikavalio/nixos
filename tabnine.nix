@@ -5,18 +5,14 @@
 let
   platformSpecific = {
     x86_64-linux = {
-      sha256 = "caa86a00d0ede8485bf855276ac1b2e411a5e99de612696b137ea3519a8e4967";
+      sha256 = "9e55a64a0362350fc82080f602749f6e2899e95ea1751de98f0f1d3dac5cb2d1";
       string = "x86_64-unknown-linux-gnu";
-    };
-    x86_64-darwin = {
-      sha256 = "eb5ceb534629dcf5d57640bf672ea0d94ac02e264209ab3a29e6bda8a44d3b8f";
-      string = "x86_64-apple-darwin";
     };
   }.${stdenv.hostPlatform.system} or (throw "Unsupported platform");
 in
 stdenv.mkDerivation rec {
   pname = "tabnine";
-  version = "1.0.12";
+  version = "1.0.14";
 
   src = fetchurl {
     inherit (platformSpecific) sha256;
