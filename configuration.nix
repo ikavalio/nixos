@@ -10,12 +10,12 @@ let
   tabnine    = (pkgs.callPackage ./tabnine.nix {});
 in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [ 
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      "${builtins.fetchGit { url="https://github.com/rycee/home-manager"; ref="master"; }}/nixos"
-    ];
+    "${builtins.fetchGit { url="https://github.com/rycee/home-manager"; ref="master"; }}/nixos"
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -48,6 +48,7 @@ in
     fonts = with pkgs; [
       corefonts
       inconsolata
+      iosevka
       terminus_font
       dejavu_fonts
       ubuntu_font_family
@@ -141,6 +142,12 @@ in
     home = "/home/ikavalio";
     shell = pkgs.zsh;
   };
+
+  home-manager.users = (x: let commons = x; in {
+    ikavalio = {
+      inherit (commons) home;
+    };
+  }) (pkgs.callPackage ./home.nix {});
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

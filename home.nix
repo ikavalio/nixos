@@ -4,6 +4,7 @@
   home = {
     file = {
       ".config/alacritty/alacritty.yml".source = ./alacritty.yml;
+      ".config/Code/User/settings.json".source = ./settings.json;
     };
 
     packages = with pkgs; [
@@ -12,6 +13,7 @@
       ponyc
       ruby
       python3
+      lynx
     ];
   };
 }

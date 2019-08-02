@@ -1,0 +1,85 @@
+{
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.suggest.localityBonus": true,
+  "window.zoomLevel": 0,
+  "workbench.fontAliasing": "auto",
+  "git.autofetch": true,
+  "terminal.integrated.fontSize": 14,
+  "search.useGlobalIgnoreFiles": true,
+  "files.defaultLanguage": "plaintext",
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "go",
+    "handlebars",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "pug",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "yml"
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "go.useLanguageServer": true,
+  "go.coverOnSingleTest": true,
+  "go.lintTool": "golangci-lint",
+  "go.autocompleteUnimportedPackages": false,
+  "go.buildTags": "integration",
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "ruby.lint": {
+    "debride": false,
+    "fasterer": false,
+    "reek": false,
+    "rubocop": true,
+    "ruby": true,
+    "ruby-lint": false,
+    "standard": false
+  },
+  "ruby.lintDebounceTime": 1000,
+  "ruby.interpreter.commandPath": "/opt/chefdk/embedded/bin/ruby",
+  "ruby.pathToBundler": "/Users/ivan.kavaliou/.chefdk/gem/ruby/2.5.0/bin/bundle",
+  "ruby.useLanguageServer": false,
+  "[ruby]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "rebornix.ruby"
+  },
+  "ruby.format": "rubocop",
+  "foodcritic.enable": true,
+  "ruby.codeCompletion": "rcodetools",
+  "ruby.intellisense": "rubyLocate",
+  "terraform.lintPath": "tflint"
+}
