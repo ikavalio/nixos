@@ -97,6 +97,9 @@ in
 
   # List services that you want to enable:
 
+  # custom udev rules for QMK
+  services.udev.extraRules = (pkgs.callPackage ./udev-kb.nix {});
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
