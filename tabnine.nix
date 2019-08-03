@@ -5,14 +5,14 @@
 let
   platformSpecific = {
     x86_64-linux = {
-      sha256 = "9e55a64a0362350fc82080f602749f6e2899e95ea1751de98f0f1d3dac5cb2d1";
+      sha256 = "0jkbxpwqwjkxp1ajn4s1bh03b7jdg74a491zh1gbbjgj0zf72y6h";
       string = "x86_64-unknown-linux-gnu";
     };
   }.${stdenv.hostPlatform.system} or (throw "Unsupported platform");
 in
 stdenv.mkDerivation rec {
   pname = "tabnine";
-  version = "1.0.14";
+  version = "2.0.4";
 
   src = fetchurl {
     inherit (platformSpecific) sha256;
