@@ -10,7 +10,6 @@
     packages = with pkgs; [
       go
       rustc
-      ponyc
       ruby
       python3
       lynx

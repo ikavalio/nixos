@@ -10,7 +10,7 @@ let
   tabnine    = (pkgs.callPackage ./tabnine.nix {});
 in
 {
-  imports = [ 
+  imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
@@ -80,6 +80,7 @@ in
     tabnine
     (callPackage ./neovim.nix {tabnine = tabnine; })
     tmux zsh
+    mesa freeglut
   ]
   ++ tmuxConfig.plugins
   ++ zshConfig.plugins;
@@ -156,5 +157,5 @@ in
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.03"; # Did you read the comment?
+  system.stateVersion = "unstable"; # Did you read the comment?
 }

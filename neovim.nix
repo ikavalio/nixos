@@ -190,7 +190,7 @@ neovim.override {
       vnoremap <leader>P "+P<Paste>
 
       " Deoplete complete on Tab
-      inoremap <silent><expr><TAB>  pumvisible() ? deoplete#mappings#close_popup() : "\<TAB>"
+      inoremap <silent><expr><TAB>  pumvisible() ? deoplete#close_popup() : "\<TAB>"
 
       map <C-p> :FZF<CR>
       map <C-n> :NERDTreeToggle<CR>
