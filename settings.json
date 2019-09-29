@@ -81,5 +81,7 @@
   "foodcritic.enable": true,
   "ruby.codeCompletion": "rcodetools",
   "ruby.intellisense": "rubyLocate",
-  "terraform.lintPath": "tflint"
+  "terraform.lintPath": "tflint",
+  "purescript.addNpmPath": true,
+  "purescript.addPscPackageSources": true
 }

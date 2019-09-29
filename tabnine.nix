@@ -5,14 +5,14 @@
 let
   platformSpecific = {
     x86_64-linux = {
-      sha256 = "0jkbxpwqwjkxp1ajn4s1bh03b7jdg74a491zh1gbbjgj0zf72y6h";
+      sha256 = "1k59cdciy7lnash0fnkv97bcg3i99q8v0b64zv0vvp4mxzsrsgvk";
       string = "x86_64-unknown-linux-gnu";
     };
   }.${stdenv.hostPlatform.system} or (throw "Unsupported platform");
 in
 stdenv.mkDerivation rec {
   pname = "tabnine";
-  version = "2.0.4";
+  version = "2.1.17";
 
   src = fetchurl {
     inherit (platformSpecific) sha256;
@@ -25,11 +25,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     cp $src $out/bin/TabNine
     chmod +x $out/bin/TabNine
-  '';
-
-  postFixup = lib.optionalString (stdenv.hostPlatform.system == "x86_64-linux") ''
-    patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${stdenv.cc.libc}/lib:${stdenv.cc.cc.lib}/lib" $out/bin/TabNine
   '';
 
   meta = with stdenv.lib; {
